@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Bold Salon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #4CAF50;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .appointment-info {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .hairstyles-list, .style-types-list {
+            list-style-type: none;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .hairstyles-list li, .style-types-list li {
+            font-size: 18px;
+            background-color: #e8f5e9;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .hairstyles-list li:hover, .style-types-list li:hover {
+            background-color: #c8e6c9;
+        }
+
+        .back-button, .report-bug-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .back-button:hover, .report-bug-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Thank You for Your Appointment!</h1>
+    <p>We’re excited to see you at Bold Salon. Your appointment has been confirmed.</p>
+
+    <div class="appointment-info">
+        <h2>Your Appointment Details</h2>
+        <p><strong>Selected Hairstyle:</strong> <span id="selectedHairstyle">N/A</span></p>
+        <p><strong>Selected Style:</strong> <span id="selectedStyle">N/A</span></p>
+    </div>
+
+    <h3>Here are the 10 Hairstyles and Beauty Services You Can Choose From:</h3>
+    <ul class="hairstyles-list">
+        <li onclick="selectHairstyle('Tattoo')">Tattoo</li>
+        <li onclick="selectHairstyle('Manicure')">Manicure</li>
+        <li onclick="selectHairstyle('Nail Modification')">Nail Modification</li>
+        <li onclick="selectHairstyle('Nail Therapy')">Nail Therapy</li>
+        <li onclick="selectHairstyle('Hair Wash')">Hair Wash</li>
+        <li onclick="selectHairstyle('Girl\'s Cut')">Girl's Cut</li>
+        <li onclick="selectHairstyle('Boy\'s Cut')">Boy's Cut</li>
+        <li onclick="selectHairstyle('Adult Men\'s Cut')">Adult Men's Cut</li>
+        <li onclick="selectHairstyle('Adult Women\'s Cut')">Adult Women's Cut</li>
+        <li onclick="selectHairstyle('Hair Therapy')">Hair Therapy</li>
+    </ul>
+
+    <h3>And there are two types of Hairstyles:</h3>
+    <ul class="style-types-list">
+        <li onclick="selectStyle('Senior Style')">Senior Style</li>
+        <li onclick="selectStyle('Master Style')">Master Style</li>
+    </ul>
+
+    <!-- Button to go back to the previous page -->
+    <button class="back-button" onclick="window.history.back()">Go Back</button>
+
+    <!-- Button to navigate to the bug reporting page -->
+    <button class="report-bug-button" onclick="window.location.href='page2.html'">Report a Bug</button>
+
+    <!-- Footer Note -->
+    <p>Come visit us at Mongolia, State Department Store, 1.5 floor.</p>
+    <p>This is version 1.0 beta. If you see any bugs, please <a href="page2.html">report them here</a>.</p>
+    <p>&copy; Bold Salon 2024. All Rights Reserved.</p>
+
+    <script>
+        // Function to handle the selection of a hairstyle
+        function selectHairstyle(hairstyle) {
+            // Update the displayed selected hairstyle
+            document.getElementById('selectedHairstyle').innerText = hairstyle;
+        }
+
+        // Function to handle the selection of a style (Senior or Master)
+        function selectStyle(style) {
+            // Update the displayed selected style
+            document.getElementById('selectedStyle').innerText = style;
+        }
+    </script>
+
+</body>
+</html>

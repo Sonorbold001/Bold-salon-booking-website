@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bold Salon - Book Your Appointment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bold Salon - Hair & Nail Booking</h1>
+        </header>
+
+        <!-- Service Selection -->
+        <div class="service-selection">
+            <h2>Select a Service</h2>
+            <div class="tabs">
+                <button id="hairTab" class="tab" onclick="showService('hair')">Hair</button>
+                <button id="nailTab" class="tab" onclick="showService('nail')">Nails</button>
+            </div>
+
+            <!-- Hair Services Form -->
+            <div id="hairServices" class="services-form" style="display:none;">
+                <label for="hairService">Choose a Hair Service:</label>
+                <select id="hairService">
+                    <option value="haircut">Haircut</option>
+                    <option value="haircolor">Hair Color</option>
+                    <option value="hairtreatment">Hair Treatment</option>
+                </select>
+            </div>
+
+            <!-- Nail Services Form -->
+            <div id="nailServices" class="services-form" style="display:none;">
+                <label for="nailService">Choose a Nail Service:</label>
+                <select id="nailService">
+                    <option value="manicure">Manicure</option>
+                    <option value="pedicure">Pedicure</option>
+                    <option value="gelnails">Gel Nails</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Date and Time Selection -->
+        <div class="booking-details">
+            <h2>Pick Your Appointment</h2>
+            <label for="appointmentDate">Choose Date:</label>
+            <input type="date" id="appointmentDate" required>
+            <label for="appointmentTime">Choose Time:</label>
+            <input type="time" id="appointmentTime" required>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <h2>Your Contact Information</h2>
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" placeholder="Enter your full name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+
+        <!-- Book Appointment Button -->
+        <div class="booking-button">
+            <button type="button" onclick="submitBooking()">Book Appointment</button>
+        </div>
+
+        <!-- Confirmation message -->
+        <div id="confirmationMessage" class="confirmation-message" style="display:none;">
+            <h3>Your appointment has been booked successfully!</h3>
+            <p>Redirecting to the confirmation page...</p>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle service tab switching
+        function showService(serviceType) {
+            if (serviceType === 'hair') {
+                document.getElementById('hairServices').style.display = 'block';
+                document.getElementById('nailServices').style.display = 'none';
+            } else if (serviceType === 'nail') {
+                document.getElementById('hairServices').style.display = 'none';
+                document.getElementById('nailServices').style.display = 'block';
+            }
+        }
+
+        // Function to handle form submission and redirect to Page 1
+        function submitBooking() {
+            // Get form data
+            const serviceType = document.getElementById('hairServices').style.display === 'block' ? 'hair' : 'nail';
+            const service = serviceType === 'hair' ? document.getElementById('hairService').value : document.getElementById('nailService').value;
+            const appointmentDate = document.getElementById('appointmentDate').value;
+            const appointmentTime = document.getElementById('appointmentTime').value;
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+
+            // Check if all required fields are filled
+            if (!fullName || !email || !appointmentDate || !appointmentTime || !service) {
+                alert("Please fill in all required fields.");
+                return; // Stop the function execution if fields are not filled
+            }
+
+            // Create a booking object (this could be sent to a backend)
+            const bookingDetails = {
+                serviceType,
+                service,
+                appointmentDate,
+                appointmentTime,
+                fullName,
+                email
+            };
+
+            // Log the booking details to the console (or send to backend)
+            console.log('Booking Details:', bookingDetails);
+
+            // Display confirmation message
+            document.getElementById('confirmationMessage').style.display = 'block';
+
+            // Redirect to the "Page 1" (Thank you page)
+            setTimeout(function() {
+                window.location.href = 'page1.html'; // Change this to the actual location of your "page1.html"
+            }, 3000); // Redirect after 10 seconds (you can adjust the delay)
+        }
+    </script>
+</body>
+</html>

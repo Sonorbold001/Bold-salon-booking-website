@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <body>
+      <p>page2</p>
+  </body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Reporting - Bold Salon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        label {
+            font-size: 16px;
+            margin-top: 10px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 150px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .confirmation {
+            margin-top: 20px;
+            text-align: center;
+            color: green;
+            font-size: 18px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Report a Bug</h1>
+
+        <form id="bugReportForm">
+            <label for="userName">Your Name:</label>
+            <input type="text" id="userName" name="userName" placeholder="Enter your name" required>
+
+            <label for="userEmail">Your Email:</label>
+            <input type="email" id="userEmail" name="userEmail" placeholder="Enter your email" required>
+
+            <label for="bugDescription">Description of the Issue:</label>
+            <textarea id="bugDescription" name="bugDescription" placeholder="Describe the bug in detail" required></textarea>
+
+            <label for="severity">Severity Level:</label>
+            <select id="severity" name="severity" required>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+                <option value="critical">Critical</option>
+            </select>
+
+            <button type="submit">Submit Bug Report</button>
+        </form>
+
+        <div id="confirmationMessage" class="confirmation">
+            <p>Thank you for reporting the issue. We will look into it as soon as possible!</p>
+        </div>
+    </div>
+
+    <script>
+        // Handling form submission
+        document.getElementById('bugReportForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent page refresh on submit
+
+            // Get form data
+            const userName = document.getElementById('userName').value;
+            const userEmail = document.getElementById('userEmail').value;
+            const bugDescription = document.getElementById('bugDescription').value;
+            const severity = document.getElementById('severity').value;
+
+            // Log the bug report details (in production, you'd send this to a backend system)
+            console.log('Bug Report:', {
+                userName,
+                userEmail,
+                bugDescription,
+                severity
+            });
+
+            // Show confirmation message
+            document.getElementById('confirmationMessage').style.display = 'block';
+
+            // Clear the form
+            document.getElementById('bugReportForm').reset();
+        });
+    </script>
+
+</body>
+</html>
